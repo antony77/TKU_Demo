@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<ajaxControlToolkit>
+  <controlBundles>
+    <controlBundle name="TECAjaxControlBundle">
+      <control name="WebControls.AJAX.ProgressBar" assembly="TEC.Core.WebForm" />
+      <control name="WebControls.AJAX.GridViewExtender" assembly="TEC.Core.WebForm" />
+    </controlBundle>
+  </controlBundles>
+</ajaxControlToolkit>

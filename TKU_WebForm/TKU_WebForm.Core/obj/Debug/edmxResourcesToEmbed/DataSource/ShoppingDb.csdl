@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CoverPhoto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AccountEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MemberStatus" Type="Byte" Nullable="false" />
+    <Property Name="MemberLevel" Type="Byte" Nullable="false" />
+    <Property Name="AuthStatus" Type="Byte" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Memberstatus1" Relationship="Self.FK_Member_Reference_Memberstatus" FromRole="Member" ToRole="Memberstatus" />
+    <NavigationProperty Name="MemberPushToken" Relationship="Self.FK_MemberPushToken_Reference_Member" FromRole="Member" ToRole="MemberPushToken" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_Reference_MemberBuyer" FromRole="Member" ToRole="Order" />
+    <NavigationProperty Name="Order1" Relationship="Self.FK_Order_Reference_MemberSeller" FromRole="Member" ToRole="Order" />
+    <NavigationProperty Name="ShoppingCart" Relationship="Self.FK_ShoppingCart_Reference_Member" FromRole="Member" ToRole="ShoppingCart" />
+  </EntityType>
+  <EntityType Name="MemberPushToken">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PushToken" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MemberID" Type="Int64" />
+    <Property Name="DeviceType" Type="Byte" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_MemberPushToken_Reference_Member" FromRole="MemberPushToken" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Memberstatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Member_Reference_Memberstatus" FromRole="Memberstatus" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TotalCount" Type="Int32" Nullable="false" />
+    <Property Name="OrderStatus" Type="Byte" Nullable="false" />
+    <Property Name="Buyer" Type="Int64" />
+    <Property Name="Seller" Type="Int64" />
+    <Property Name="PayCompleteDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Order_Reference_MemberBuyer" FromRole="Order" ToRole="Member" />
+    <NavigationProperty Name="Member1" Relationship="Self.FK_Order_Reference_MemberSeller" FromRole="Order" ToRole="Member" />
+    <NavigationProperty Name="OrderStatus1" Relationship="Self.FK_Order_Reference_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
+    <NavigationProperty Name="OrderInfo" Relationship="Self.FK_OrderInfo_Reference_Order" FromRole="Order" ToRole="OrderInfo" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int64" Nullable="false" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderInfo_Reference_Order" FromRole="OrderInfo" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_OrderInfo_Reference_Product" FromRole="OrderInfo" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_Order_Reference_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="ProdcutPhoto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="PhotoPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ProdcutPhoto_Reference_Product" FromRole="ProdcutPhoto" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="MemberID" Type="Int64" Nullable="false" />
+    <Property Name="ProductCategoryID" Type="Int64" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ProductState" Type="Byte" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OrderInfo" Relationship="Self.FK_OrderInfo_Reference_Product" FromRole="Product" ToRole="OrderInfo" />
+    <NavigationProperty Name="ProdcutPhoto" Relationship="Self.FK_ProdcutPhoto_Reference_Product" FromRole="Product" ToRole="ProdcutPhoto" />
+    <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_Reference_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="ProductStatus" Relationship="Self.FK_Product_Reference_ProductStatus" FromRole="Product" ToRole="ProductStatus" />
+    <NavigationProperty Name="ShoppingCart" Relationship="Self.FK_ShoppingCart_Reference_Product" FromRole="Product" ToRole="ShoppingCart" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descrition" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ParentID" Type="Int64" />
+    <Property Name="Sequence" Type="Int64" Nullable="false" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Reference_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+    <NavigationProperty Name="ProductCategory1" Relationship="Self.FK_ProductCategory_Reference_ProductCategory" FromRole="ProductCategory" ToRole="ProductCategory1" />
+    <NavigationProperty Name="ProductCategory2" Relationship="Self.FK_ProductCategory_Reference_ProductCategory" FromRole="ProductCategory1" ToRole="ProductCategory" />
+  </EntityType>
+  <EntityType Name="ProductStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductStatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Reference_ProductStatus" FromRole="ProductStatus" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ShoppingCart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberID" Type="Int64" Nullable="false" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_ShoppingCart_Reference_Member" FromRole="ShoppingCart" ToRole="Member" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ShoppingCart_Reference_Product" FromRole="ShoppingCart" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Member_Reference_Memberstatus">
+    <End Role="Memberstatus" Type="Self.Memberstatus" Multiplicity="1" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Memberstatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="MemberStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberPushToken_Reference_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="MemberPushToken" Type="Self.MemberPushToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MemberPushToken">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Reference_MemberBuyer">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Buyer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Reference_MemberSeller">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Seller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShoppingCart_Reference_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ShoppingCart">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Reference_OrderStatus">
+    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInfo_Reference_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderInfo_Reference_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProdcutPhoto_Reference_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProdcutPhoto" Type="Self.ProdcutPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProdcutPhoto">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Reference_ProductCategory">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Reference_ProductStatus">
+    <End Role="ProductStatus" Type="Self.ProductStatus" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductState" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShoppingCart_Reference_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ShoppingCart">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCategory_Reference_ProductCategory">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+    <End Role="ProductCategory1" Type="Self.ProductCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductCategory1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShoppingDb" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Member" EntityType="Self.Member" />
+    <EntitySet Name="MemberPushToken" EntityType="Self.MemberPushToken" />
+    <EntitySet Name="Memberstatus" EntityType="Self.Memberstatus" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
+    <EntitySet Name="ProdcutPhoto" EntityType="Self.ProdcutPhoto" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" />
+    <EntitySet Name="ProductStatus" EntityType="Self.ProductStatus" />
+    <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" />
+    <AssociationSet Name="FK_Member_Reference_Memberstatus" Association="Self.FK_Member_Reference_Memberstatus">
+      <End Role="Memberstatus" EntitySet="Memberstatus" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberPushToken_Reference_Member" Association="Self.FK_MemberPushToken_Reference_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MemberPushToken" EntitySet="MemberPushToken" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Reference_MemberBuyer" Association="Self.FK_Order_Reference_MemberBuyer">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Reference_MemberSeller" Association="Self.FK_Order_Reference_MemberSeller">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingCart_Reference_Member" Association="Self.FK_ShoppingCart_Reference_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Reference_OrderStatus" Association="Self.FK_Order_Reference_OrderStatus">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInfo_Reference_Order" Association="Self.FK_OrderInfo_Reference_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderInfo_Reference_Product" Association="Self.FK_OrderInfo_Reference_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProdcutPhoto_Reference_Product" Association="Self.FK_ProdcutPhoto_Reference_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProdcutPhoto" EntitySet="ProdcutPhoto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Reference_ProductCategory" Association="Self.FK_Product_Reference_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Reference_ProductStatus" Association="Self.FK_Product_Reference_ProductStatus">
+      <End Role="ProductStatus" EntitySet="ProductStatus" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingCart_Reference_Product" Association="Self.FK_ShoppingCart_Reference_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCategory_Reference_ProductCategory" Association="Self.FK_ProductCategory_Reference_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="ProductCategory1" EntitySet="ProductCategory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

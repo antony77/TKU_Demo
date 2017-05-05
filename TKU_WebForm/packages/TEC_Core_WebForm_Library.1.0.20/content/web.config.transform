@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <system.web>
+    <pages>
+      <controls>
+        <add tagPrefix="TECWebControl" assembly="TEC.Core.WebForm" namespace="TEC.Core.WebForm.WebControls" />
+        <add tagPrefix="TECWebControl" assembly="TEC.Core.WebForm" namespace="TEC.Core.WebForm.WebControls.AJAX" />
+      </controls>
+    </pages>
+  </system.web>
+</configuration>

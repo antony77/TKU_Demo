@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="46b178a9fae74ba1bac972b2f0671084" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel.Member" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.MemberPushToken" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Memberstatus" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Order" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.OrderInfo" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.OrderStatus" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.ProdcutPhoto" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Product" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.ProductCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.ProductStatus" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.ShoppingCart" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.FK_Member_Reference_Memberstatus" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_MemberPushToken_Reference_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Order_Reference_MemberBuyer" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Order_Reference_MemberSeller" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_ShoppingCart_Reference_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Order_Reference_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_OrderInfo_Reference_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_OrderInfo_Reference_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_ProdcutPhoto_Reference_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Product_Reference_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Product_Reference_ProductStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_ShoppingCart_Reference_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_ProductCategory_Reference_ProductCategory" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
