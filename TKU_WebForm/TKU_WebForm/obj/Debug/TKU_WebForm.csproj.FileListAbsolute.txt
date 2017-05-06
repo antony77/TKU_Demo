@@ -59,3 +59,4 @@ D:\Users\Yen\Documents\GitHub\TKU_Demo\TKU_WebForm\TKU_WebForm\obj\Debug\TKU_Web
 D:\Users\Yen\Documents\GitHub\TKU_Demo\TKU_WebForm\TKU_WebForm\obj\Debug\TKU_WebForm.pdb
 D:\Users\Yen\Documents\GitHub\TKU_Demo\TKU_WebForm\TKU_WebForm\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\Users\Yen\Documents\GitHub\TKU_Demo\TKU_WebForm\TKU_WebForm\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Users\Yen\Documents\GitHub\TKU_Demo\TKU_WebForm\TKU_WebForm\bin\Microsoft.AspNet.EntityDataSource.dll

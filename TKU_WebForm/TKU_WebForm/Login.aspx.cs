@@ -14,7 +14,7 @@ using TKU_WebForm.UIData.Security;
 
 namespace TKU_WebForm
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
