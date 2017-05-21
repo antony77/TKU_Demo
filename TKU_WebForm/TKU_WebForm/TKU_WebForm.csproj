@@ -142,7 +142,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="AjaxControlToolkit.config" />
     <Content Include="Main.Master" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />

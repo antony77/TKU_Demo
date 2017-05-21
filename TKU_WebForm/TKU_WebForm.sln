@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKU_WebForm", "TKU_WebForm\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKU_WebForm.Core", "TKU_WebForm.Core\TKU_WebForm.Core.csproj", "{D3A721DE-B368-47DD-89D9-F7B6987DCF7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKU_EF.Traning", "TKU_EF.Traning\TKU_EF.Traning.csproj", "{EDE85814-3C24-4AA4-853C-3D528D9043DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D3A721DE-B368-47DD-89D9-F7B6987DCF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3A721DE-B368-47DD-89D9-F7B6987DCF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3A721DE-B368-47DD-89D9-F7B6987DCF7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE85814-3C24-4AA4-853C-3D528D9043DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE85814-3C24-4AA4-853C-3D528D9043DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE85814-3C24-4AA4-853C-3D528D9043DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE85814-3C24-4AA4-853C-3D528D9043DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
