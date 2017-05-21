@@ -228,7 +228,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="UIData\Security\UserStore.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\TKU_WebForm.Core\TKU_WebForm.Core.csproj">
       <Project>{d3a721de-b368-47dd-89d9-f7b6987dcf7f}</Project>
